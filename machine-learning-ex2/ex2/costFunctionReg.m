@@ -19,8 +19,14 @@ grad = zeros(size(theta));
 
 
 
+h = sigmoid(X*theta);
 
+theta_ = [0 ; theta(2:size(theta), :)];
+p = lambda*(theta_'*theta_)/(2*m);
+J = ((-y)'*log(h) - (1-y)'*log(1-h))/m + p;
 
+% calculate grads
+grad = (X'*(h - y)+lambda*theta_)/m;
 
 % =============================================================
 
