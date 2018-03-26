@@ -15,10 +15,16 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
+m = length(X);
 
-
-
-
+for i=1:m
+  
+  poly_features = zeros(p, 1);
+  for degree=1:p
+    poly_features(degree) = X(i).^degree;
+  end
+    
+  X_poly(i, :) = poly_features;
 
 % =========================================================================
 
