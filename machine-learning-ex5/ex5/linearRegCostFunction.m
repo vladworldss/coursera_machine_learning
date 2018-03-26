@@ -20,14 +20,17 @@ grad = zeros(size(theta));
 %
 
 
+h = X*theta;
+
+theta_ = [0 ; theta(2:size(theta))];
+
+reg_param = lambda*(theta_'*theta_)/(2*m);
+
+J = (1/(2*m))*(sum(power((h-y), 2))) + reg_param;
 
 
-
-
-
-
-
-
+% calculate grads
+grad = (1/m)*(X'*(h - y)+lambda*theta_);
 
 
 % =========================================================================
